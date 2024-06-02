@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xe$)qqn3uq5(9i0w$61%i=7m20ajemrju2$dm1t8*fulvgcp-x'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DJANGO_SUPERUSER_PASSWORD = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
 DJANGO_SUPERUSER_USERNAME = os.environ.get('DJANGO_SUPERUSER_USERNAME')
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'core',
+    'drf_yasg',
     'django_filters',
     'hydroponic_system_app.apps.HydroponicSystemAppConfig',
     'sensor_app.apps.SensorAppConfig',
