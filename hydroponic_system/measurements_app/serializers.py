@@ -4,6 +4,9 @@ from measurements_app.models import Measurements
 
 
 class MeasurementsSerializer(serializers.ModelSerializer):
+    """
+    Measurements Serializer converting complex data types into Python data types
+    """
     sensor = serializers.StringRelatedField()
     owner = serializers.StringRelatedField()
     hydroponic_system = serializers.PrimaryKeyRelatedField(read_only=True)

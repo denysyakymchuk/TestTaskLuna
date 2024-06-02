@@ -5,6 +5,9 @@ from .models import Sensor
 
 
 class SensorSerializer(serializers.ModelSerializer):
+    """
+    Sensor Serializer converting complex data types into Python data types
+    """
     measurements = MeasurementsSerializer(many=True, read_only=True)
     owner = serializers.StringRelatedField()
 

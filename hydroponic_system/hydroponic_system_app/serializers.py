@@ -5,6 +5,9 @@ from .models import HydroponicSystem
 
 
 class HydroponicSystemSerializer(serializers.ModelSerializer):
+    """
+    Hydroponic System Serializer converting complex data types into Python data types
+    """
     owner = serializers.StringRelatedField(read_only=True)
     sensor = SensorWithoutRelationSerializer(many=True, read_only=True)
 
