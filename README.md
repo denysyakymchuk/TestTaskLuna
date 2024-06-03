@@ -1,5 +1,5 @@
 
-# Installation
+# <center>Installation</center>
 
 >### For run project you need installation __Git__, __Docker__ and __docker compose__ instruments.
 
@@ -10,14 +10,14 @@ How to install docker-compose - <https://docs.docker.com/compose/install/>
 How to install Git - <https://www.git-scm.com/downloads>
 
 ___
-# Download project from GitHub
+# <center>Download project from GitHub</center>
 
 >### For download application use command in terminal
 >``git clone https://github.com/denysyakymchuk/TestTaskLuna.git``
 
 
 ___
-# Configuration
+# <center>Configuration</center>
 
 >### Create **.env** file in main directory of project. He has to contain variables:
 
@@ -32,7 +32,7 @@ ___
 
 
 ___
-# Run application
+# <center>Run application</center>
 
 >### In terminal go to main directory and type command
 > ``docker compose up --build``

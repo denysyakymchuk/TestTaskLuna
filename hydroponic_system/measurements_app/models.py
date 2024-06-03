@@ -15,3 +15,11 @@ class Measurements(models.Model):
     tds = models.FloatField()
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.hydroponic_system}'
+
+    class Meta:
+        verbose_name = "Measurement"
+        verbose_name_plural = "Measurements"
+        ordering = ("-time_create",)

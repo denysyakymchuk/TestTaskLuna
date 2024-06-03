@@ -26,11 +26,14 @@ class MeasurementsViewSet(viewsets.ModelViewSet):
         """
         Get hydroponic systems from database according  id of user
         """
+        if getattr(self, "swagger_fake_view", False):
+            return Measurements.objects.none()
+
         return Measurements.objects.filter(owner=self.request.user)
 
     def perform_create(self, serializer):
         """
-        Save new measurement system to database
+        Create new measurement to database
         """
         user = self.request.user
 
@@ -38,7 +41,7 @@ class MeasurementsViewSet(viewsets.ModelViewSet):
         try:
             sensor = Sensor.objects.get(id=self.request.data.get('sensor'), hydroponic_system__owner=user)
         except Sensor.DoesNotExist:
-            raise ValidationError("Sensor does not exist or does not belong to the user.")
+            raise ValidationError("Provide sensor field or sensor does not exist or does not belong to the user.")
 
         if serializer.is_valid(raise_exception=True):
             # Save the measurement with the associated sensor and hydroponic system
