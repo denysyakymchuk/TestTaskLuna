@@ -11,4 +11,8 @@ class Sensor(models.Model):
 
     def __str__(self):
         return f'{self.sensor_name}'
-    
+
+    class Meta:
+        verbose_name = "Sensor"
+        verbose_name_plural = "Sensors"
+        ordering = ("-time_create",)

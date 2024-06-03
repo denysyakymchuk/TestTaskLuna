@@ -25,6 +25,8 @@ class SensorViewSet(viewsets.ModelViewSet):
         """
         Get sensors from the database according to the id of the user
         """
+        if getattr(self, "swagger_fake_view", False):
+            return Sensor.objects.none()
         return Sensor.objects.filter(hydroponic_system__owner=self.request.user)
 
     def perform_create(self, serializer):
@@ -32,7 +34,7 @@ class SensorViewSet(viewsets.ModelViewSet):
         Save new sensor to database
         """
         try:
-            HydroponicSystem.objects.filter(id=self.request.data.get('hydroponic_system'), owner=self.request.user)
+            HydroponicSystem.objects.get(id=self.request.data.get('hydroponic_system'), owner=self.request.user)
         except HydroponicSystem.DoesNotExist:
             raise ValidationError("Hydroponic system does not exist or does not belong to the user.")
 

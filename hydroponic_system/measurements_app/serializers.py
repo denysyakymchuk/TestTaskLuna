@@ -8,7 +8,7 @@ class MeasurementsSerializer(serializers.ModelSerializer):
     Measurements Serializer converting complex data types into Python data types
     """
     sensor = serializers.StringRelatedField()
-    owner = serializers.StringRelatedField()
+    owner = serializers.PrimaryKeyRelatedField(read_only=True)
     hydroponic_system = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:

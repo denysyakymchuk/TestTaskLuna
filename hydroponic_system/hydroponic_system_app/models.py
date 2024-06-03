@@ -10,3 +10,8 @@ class HydroponicSystem(models.Model):
 
     def __str__(self):
         return f'{self.hydroponic_system_name}'
+
+    class Meta:
+        verbose_name = "Hydroponic system"
+        verbose_name_plural = "Hydroponic systems"
+        ordering = ("-time_create",)

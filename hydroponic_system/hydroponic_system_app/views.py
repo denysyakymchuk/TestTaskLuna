@@ -27,7 +27,10 @@ class HydroponicSystemViewSet(viewsets.ModelViewSet):
         """
         Get hydroponic systems from database according  id
         """
-        Response(HydroponicSystem.objects.filter(owner=self.request.user), status=status.HTTP_200_OK)
+        if getattr(self, "swagger_fake_view", False):
+            return HydroponicSystem.objects.none()
+
+        return HydroponicSystem.objects.filter(owner=self.request.user)
 
     def perform_create(self, serializer):
         """
